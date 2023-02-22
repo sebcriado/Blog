@@ -1,0 +1,14 @@
+<h1 class="accueil-title">Les derniers articles</h1>
+<?php foreach ($articles as $article) : ?>
+    <article>
+        <h1 class="title-article"><?= $article['title']; ?></h1>
+        <small>Créé le <?= (new DateTimeImmutable($article['createdAt']))->format('d/m/Y'); ?></small>
+        <?php if ($article['image']) : ?>
+            <img src="<?= $article['image'] ?>" alt="" width="300px">
+        <?php endif; ?>
+        <p class="content-article"><?= mb_substr($article['content'], 0, 100) ?> [...]</p>
+        <p class="category-article"><?= $article['name'] ?></p>
+    </article>
+<?php endforeach; ?>
+
+<footer></footer>

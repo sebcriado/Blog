@@ -1,0 +1,33 @@
+article{
+    background-color: rgb(215, 215, 215);
+    border-radius: 20px;
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    margin-top: 40px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 20px;
+}
+
+.accueil-title{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.title-article{
+    font-size: 25px;
+}
+
+.content-article{
+    font-size: 12px;
+}
+
+footer{
+    height: 100px;
+}
+
