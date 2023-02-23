@@ -56,3 +56,16 @@ function getAllCategory()
 
     return $query->fetchAll();
 }
+
+function getArticleId($idArticle)
+{
+    $pdo = dataBaseConnect();
+    $sql = 'SELECT *
+            FROM article
+            WHERE idArticle = ?';
+
+    $query = $pdo->prepare($sql);
+    $query->execute([$idArticle]);
+
+    return $query->fetch();
+}

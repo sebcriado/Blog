@@ -1,13 +1,36 @@
+<header>
+    <nav class="navbar navbar-expand-lg bg-primary" aria-label="Twelfth navbar example">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+                <ul class="navbar-nav">
+                    <a class="nav-link link-warning active" aria-current="page" href="index.php">Accueil</a>
+
+                    <a class="nav-link text-light" href="#">Catégories</a>
+
+                    <a class="nav-link text-light" href="#">Profil</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
 <h1 class="accueil-title">Les derniers articles</h1>
 <?php foreach ($articles as $article) : ?>
-    <article>
+    <article class="recent-article">
         <h1 class="title-article"><?= $article['title']; ?></h1>
         <small>Créé le <?= (new DateTimeImmutable($article['createdAt']))->format('d/m/Y'); ?></small>
         <?php if ($article['image']) : ?>
             <img src="<?= $article['image'] ?>" alt="" width="300px">
         <?php endif; ?>
         <p class="content-article"><?= mb_substr($article['content'], 0, 100) ?> [...]</p>
-        <p class="category-article"><?= $article['name'] ?></p>
+        <div>
+            <p class="category-article"><?= $article['name'] ?></p>
+            <a class="read-more" href="article.php?id=<?= $article['idArticle'] ?>">Lire la suite</a>
+        </div>
     </article>
 <?php endforeach; ?>
 

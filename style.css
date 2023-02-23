@@ -1,4 +1,4 @@
-article{
+.recent-article{
     background-color: rgb(215, 215, 215);
     border-radius: 20px;
     width: 1000px;
@@ -23,11 +23,46 @@ article{
     font-size: 25px;
 }
 
+.all-title-article{
+    font-size: 30px;
+    margin-top: 40px;
+}
+
 .content-article{
     font-size: 12px;
+}
+
+.all-content-article{
+    padding: 50px;
+    margin-bottom: 50px;
 }
 
 footer{
     height: 100px;
 }
 
+.read-more{
+    font-size: 10px;
+    background-color: #0C6DFD;
+    color: white;
+    
+}
+
+.all-article{
+    height: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    background-color: rgb(215, 215, 215);
+    width: 1000px;
+    margin-top: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 100px;
+}
