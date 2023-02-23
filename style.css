@@ -1,3 +1,7 @@
+body{
+    background-color: rgb(252, 252, 166);
+}
+
 .recent-article{
     background-color: rgb(215, 215, 215);
     border-radius: 20px;
@@ -25,7 +29,7 @@
 
 .all-title-article{
     font-size: 30px;
-    margin-top: 40px;
+    margin-top: 80px;
 }
 
 .content-article{
@@ -55,7 +59,7 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 30px;
     background-color: rgb(215, 215, 215);
     width: 1000px;
     margin-top: 20px;
@@ -65,4 +69,8 @@ footer{
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
     padding: 100px;
+}
+
+.nav-link:hover{
+    color: rgb(255, 240, 23);
 }

@@ -22,8 +22,9 @@
 
 <article class="all-article">
     <h1 class="all-title-article"><?= $articlesId['title']; ?></h1>
+    <p class="category-article"><?= $articlesId['name'] ?></p>
     <?php if ($articlesId['image']) : ?>
         <img src="<?= $articlesId['image'] ?>" alt="" width="500px">
     <?php endif; ?>
-    <p class="all-content-article"><?= $articlesId['content'] ?></p>
+    <p class="all-content-article"><?= $articlesId['content']; ?></p>
 </article>
