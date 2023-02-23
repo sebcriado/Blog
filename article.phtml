@@ -28,3 +28,18 @@
     <?php endif; ?>
     <p class="all-content-article"><?= $articlesId['content']; ?></p>
 </article>
+
+
+<form method="POST" class="d-flex flex-column align-items-center mt-4">
+    <div class="mb-3 w-50">
+        <label for="nickname" class="form-label">Pseudo</label>
+        <input type="text" name="nickname" class="form-control" id="nickname" placeholder="Votre pseudo">
+    </div>
+    <div class="mb-3 w-50">
+        <label for="exampleFormControlTextarea1" class="form-label">Commentaire</label>
+        <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="5"></textarea>
+    </div>
+    <button type="button" class="btn btn-primary">Envoyer</button>
+</form>
+
+<footer></footer>

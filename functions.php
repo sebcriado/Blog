@@ -76,3 +76,19 @@ function getArticleId(int $idArticle)
     $result = $query->fetch();
     return $result;
 }
+
+
+function addComment()
+{
+
+    $pdo = dataBaseConnect();
+    $sql = 'SELECT * 
+            FROM comment
+            ORDER BY ';
+
+    $query = $pdo->prepare($sql);
+    $query->execute();
+
+    $result = $query->fetch();
+    return $result;
+}
