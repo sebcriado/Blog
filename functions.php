@@ -1,108 +1,39 @@
 <?php
 
 
-/**
- * Connexion à la base de données
- */
-function dataBaseConnect()
-{
-
-    // Construction du Data Source Name
-    $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8';
-
-    // Tableau d'options pour la connexion PDO
-    $options = [
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ];
-
-    // Création de la connexion PDO (création d'un objet PDO)
-    $pdo = new PDO($dsn, DB_USER, DB_PASSWORD, $options);
-    $pdo->exec('SET NAMES UTF8');
-
-    return $pdo;
-}
-
-/**
- * Sélectionne tous les articles
- */
-function getAllArticles()
-{
-    $pdo = dataBaseConnect();
-
-    $sql = 'SELECT *
-            FROM article AS A
-            INNER JOIN category AS C
-            ON A.categoryId = C.idCategory
-            ORDER BY createdAt DESC 
-            LIMIT 3';
-
-    $query = $pdo->prepare($sql);
-    $query->execute();
-
-    return $query->fetchAll();
-}
 
 function getAllCategory()
 {
-    $pdo = dataBaseConnect();
+    // Connexion à la BDD
+    $db = new Database();
 
     $sql = 'SELECT *
             FROM category
             ORDER BY name';
 
-    $query = $pdo->prepare($sql);
-    $query->execute();
-
-    return $query->fetchAll();
+    return $db->getAllResults($sql);
 }
 
-/**
- * Sélectionne un article à partir de son id
- */
+// /**
+//  * Sélectionne un article à partir de son id
+//  */
 
-function getArticleId(int $idArticle)
-{
-    $pdo = dataBaseConnect();
-    $sql = 'SELECT * 
-            FROM article AS A
-            INNER JOIN category AS C 
-            ON A.categoryId = C.idCategory
-            WHERE idArticle = ?';
+// function getArticleId(int $idArticle)
+// {
+//     // Connexion à la BDD
+//     $db = new Database();
 
-    $query = $pdo->prepare($sql);
-    $query->execute([$idArticle]);
+//     $sql = 'SELECT * 
+//             FROM article AS A
+//             INNER JOIN category AS C 
+//             ON A.categoryId = C.idCategory
+//             WHERE idArticle = ?';
 
-    $result = $query->fetch();
-    return $result;
-}
+//     return $db->getOneResult($sql, [$idArticle]);
+// }
 
 
-function addComment(string $nickname, string $content, int $idArticle)
-{
-    $pdo = dataBaseConnect();
-    $sql = 'INSERT INTO comment (nickname, content, articleId, createdAt)
-            VALUES (?,?,?,NOW())';
 
-    $query = $pdo->prepare($sql);
-    $query->execute([$nickname, $content, $idArticle]);
-}
-
-function getCommentsByArticleId(int $idArticle)
-{
-
-    $pdo = dataBaseConnect();
-
-    $sql = 'SELECT *
-            FROM comment
-            WHERE articleId = ?
-            ORDER BY createdAt DESC';
-
-    $query = $pdo->prepare($sql);
-    $query->execute([$idArticle]);
-
-    return $query->fetchAll();
-}
 
 function validateCommentForm(string $nickname, string $content)
 {
