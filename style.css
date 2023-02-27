@@ -82,5 +82,24 @@ footer{
 }
 
 .success {
+    text-align: center;
     color: green;
+}
+
+.title-comment{
+    margin-top: 30px;
+}
+
+.comment-block{
+    margin: auto;
+    width: 500px;
+    background-color: rgb(215, 215, 215);
+    border-radius: 20px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+
 }

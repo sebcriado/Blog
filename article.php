@@ -1,4 +1,8 @@
 <?php
+
+// Démarrage de la session
+session_start();
+
 // Inclusion de l'autoloader de composer
 require 'vendor/autoload.php';
 
@@ -37,10 +41,8 @@ if (!empty($_POST)) {
         // Insertion des données
         addComment($nickname, $content, $idArticle);
 
-
         // @TODO message flash
-
-
+        $_SESSION['flashbag'] = 'Votre commentaire a bien été ajouté !';
 
         // Redirection vers la page Article
         header('Location: article.php?id=' . $idArticle);
@@ -65,6 +67,14 @@ if (!$articlesId) {
 
 // Sélection des commentaires associés à l'article pour les afficher
 $comments = getCommentsByArticleId($idArticle);
+
+// Récupérer le message flash le cas échéant
+if (array_key_exists('flashbag', $_SESSION) && $_SESSION['flashbag']) {
+
+    $flashMessage = $_SESSION['flashbag'];
+    $_SESSION['flashbag'] = null;
+}
+
 
 // Affichage : inclusion du template
 $pageTitle = $articlesId['title'];
