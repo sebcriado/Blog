@@ -29,17 +29,37 @@
     <p class="all-content-article"><?= $articlesId['content']; ?></p>
 </article>
 
+<section>
+    <h2 style="text-align: center;">Commentaires</h2>
+    <form method="POST" action="article.php?id=<?= $idArticle ?>" class="d-flex flex-column align-items-center mt-4">
+        <legend style="text-align: center;">Ajouter un commentaire</legend>
+        <div class="mb-3 w-50">
+            <label for="nickname" class="form-label">Pseudo</label>
+            <input type="text" name="nickname" class="form-control" id="nickname" placeholder="Votre pseudo">
+            <?php if (isset($errors['nickname'])) : ?>
+                <p class="error"><?= $errors['nickname'] ?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3 w-50">
+            <label for="content" class="form-label">Commentaire</label>
+            <textarea class="form-control" name="content" id="content" rows="5"></textarea>
+            <?php if (isset($errors['content'])) : ?>
+                <p class="error"><?= $errors['content'] ?></p>
+            <?php endif; ?>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
 
-<form method="POST" class="d-flex flex-column align-items-center mt-4">
-    <div class="mb-3 w-50">
-        <label for="nickname" class="form-label">Pseudo</label>
-        <input type="text" name="nickname" class="form-control" id="nickname" placeholder="Votre pseudo">
-    </div>
-    <div class="mb-3 w-50">
-        <label for="exampleFormControlTextarea1" class="form-label">Commentaire</label>
-        <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="5"></textarea>
-    </div>
-    <button type="button" class="btn btn-primary">Envoyer</button>
-</form>
+    <?php if (empty($comments)) : ?>
+        <p>Soyez le premier à ajouter un commentaire !</p>
+    <?php else : ?>
+        <?php foreach ($comments as $comment) : ?>
+            <h4 style="text-align: center;">Ajouté par <?= $comment['nickname']; ?> le <?= (new DateTimeImmutable($comment['createdAt']))->format('d/m/Y') ?> à <?= (new DateTimeImmutable($comment['createdAt']))->format('H:i') ?></h4>
+            <p style="text-align: center;"><?= $comment['content']; ?></p>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+
+</section>
 
 <footer></footer>

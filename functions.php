@@ -78,17 +78,43 @@ function getArticleId(int $idArticle)
 }
 
 
-function addComment()
+function addComment(string $nickname, string $content, int $idArticle)
+{
+    $pdo = dataBaseConnect();
+    $sql = 'INSERT INTO comment (nickname, content, articleId, createdAt)
+            VALUES (?,?,?,NOW())';
+
+    $query = $pdo->prepare($sql);
+    $query->execute([$nickname, $content, $idArticle]);
+}
+
+function getCommentsByArticleId(int $idArticle)
 {
 
     $pdo = dataBaseConnect();
-    $sql = 'SELECT * 
+
+    $sql = 'SELECT *
             FROM comment
-            ORDER BY ';
+            WHERE articleId = ?
+            ORDER BY createdAt DESC';
 
     $query = $pdo->prepare($sql);
-    $query->execute();
+    $query->execute([$idArticle]);
 
-    $result = $query->fetch();
-    return $result;
+    return $query->fetchAll();
+}
+
+function validateCommentForm(string $nickname, string $content)
+{
+    $errors = [];
+
+    if (!$nickname) {
+        $errors['nickname'] = 'Le champ "pseudo" est obligatoire';
+    }
+
+    if (strlen($content) < 10) {
+        $errors['content'] = 'Le commentaire doit comporter au moins 10 caractères';
+    }
+
+    return $errors;
 }
