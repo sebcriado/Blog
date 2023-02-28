@@ -7,6 +7,7 @@ require 'config.php';
 
 // Inclusion des dépendances
 require 'src/Core/AbstractModel.php';
+require 'src/Entity/Category.php';
 require 'src/Entity/Article.php';
 require 'src/Model/ArticleModel.php';
 require 'src/Core/Database.php';

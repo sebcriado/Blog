@@ -22,13 +22,13 @@
 <?php foreach ($articles as $article) : ?>
     <article class="recent-article">
         <h1 class="title-article"><?= $article->getTitle(); ?></h1>
-        <small>Créé le <?= $article->getCreatedAt()->format('d/m/Y'); ?></small>
+        <small>Créé le <?= $article->getFormattedCreatedAt(); ?></small>
         <?php if ($article->getImage()) : ?>
             <img src="<?= $article->getImage() ?>" alt="" width="300px">
         <?php endif; ?>
         <p class="content-article"><?= mb_substr($article->getContent(), 0, 100) ?> [...]</p>
         <div>
-            <p class="category-article">@TODO</p>
+            <p class="category-article"><?= $article->getCategoryName(); ?></p>
             <a class="read-more" href="article.php?id=<?= $article->getIdArticle() ?>">Lire la suite</a>
         </div>
     </article>

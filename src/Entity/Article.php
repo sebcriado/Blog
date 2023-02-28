@@ -1,5 +1,7 @@
 <?php
 
+use Doctrine\ORM\Query\Expr\Func;
+
 class Article
 {
 
@@ -8,7 +10,7 @@ class Article
     private string $content;
     private ?string $image;
     private DateTimeImmutable $createdAt;
-    private int $categoryId;
+    private Category $category;
 
 
     public function __construct(array $data = [])
@@ -80,9 +82,9 @@ class Article
     /**
      * Set the value of categoryId
      */
-    public function setCategoryId(int $categoryId): self
+    public function setCategory(Category $category): self
     {
-        $this->categoryId = $categoryId;
+        $this->category = $category;
 
         return $this;
     }
@@ -130,8 +132,24 @@ class Article
     /**
      * Get the value of categoryId
      */
-    public function getCategoryId(): int
+    public function getCategory(): Category
     {
-        return $this->categoryId;
+        return $this->category;
+    }
+
+    /**
+     * Retourne le nom de la catégorie associé à l'article
+     */
+    public function getCategoryName(): string
+    {
+        return $this->category->getName();
+    }
+
+    /**
+     * Retourne la date de création de l'article formatté
+     */
+    public function getFormattedCreatedAt(): string
+    {
+        return $this->createdAt->format('d/m/Y');
     }
 }

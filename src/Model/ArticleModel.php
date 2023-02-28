@@ -20,6 +20,7 @@ class ArticleModel extends AbstractModel
 
         $articles = [];
         foreach ($results as $result) {
+            $result['category'] = new Category($result['categoryId'], $result['name']);
             $articles[] = new Article($result);
         }
 
