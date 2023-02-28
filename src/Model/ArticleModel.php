@@ -16,7 +16,14 @@ class ArticleModel extends AbstractModel
                 ORDER BY createdAt DESC 
                 LIMIT 3';
 
-        return $this->db->getAllResults($sql);
+        $results =  $this->db->getAllResults($sql);
+
+        $articles = [];
+        foreach ($results as $result) {
+            $articles[] = new Article($result);
+        }
+
+        return $articles;
     }
 
     /**

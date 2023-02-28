@@ -21,15 +21,15 @@
 <h1 class="accueil-title">Les derniers articles</h1>
 <?php foreach ($articles as $article) : ?>
     <article class="recent-article">
-        <h1 class="title-article"><?= $article['title']; ?></h1>
-        <small>Créé le <?= (new DateTimeImmutable($article['createdAt']))->format('d/m/Y'); ?></small>
-        <?php if ($article['image']) : ?>
-            <img src="<?= $article['image'] ?>" alt="" width="300px">
+        <h1 class="title-article"><?= $article->getTitle(); ?></h1>
+        <small>Créé le <?= $article->getCreatedAt()->format('d/m/Y'); ?></small>
+        <?php if ($article->getImage()) : ?>
+            <img src="<?= $article->getImage() ?>" alt="" width="300px">
         <?php endif; ?>
-        <p class="content-article"><?= mb_substr($article['content'], 0, 100) ?> [...]</p>
+        <p class="content-article"><?= mb_substr($article->getContent(), 0, 100) ?> [...]</p>
         <div>
-            <p class="category-article"><?= $article['name'] ?></p>
-            <a class="read-more" href="article.php?id=<?= $article['idArticle'] ?>">Lire la suite</a>
+            <p class="category-article">@TODO</p>
+            <a class="read-more" href="article.php?id=<?= $article->getIdArticle() ?>">Lire la suite</a>
         </div>
     </article>
 <?php endforeach; ?>
