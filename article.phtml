@@ -1,10 +1,10 @@
 <article class="all-article">
-    <h1 class="all-title-article"><?= $articlesId['title']; ?></h1>
-    <p class="category-article"><?= $articlesId['name'] ?></p>
-    <?php if ($articlesId['image']) : ?>
-        <img src="<?= $articlesId['image'] ?>" alt="" width="500px">
+    <h1 class="all-title-article"><?= $articlesId->getTitle(); ?></h1>
+    <p class="category-article"><?= $articlesId->getCategoryName() ?></p>
+    <?php if ($articlesId->getImage()) : ?>
+        <img src="<?= $articlesId->getImage() ?>" alt="" width="500px">
     <?php endif; ?>
-    <p class="all-content-article"><?= $articlesId['content']; ?></p>
+    <p class="all-content-article"><?= $articlesId->getContent(); ?></p>
 </article>
 
 <section>
@@ -33,8 +33,8 @@
     <?php else : ?>
         <?php foreach ($comments as $comment) : ?>
             <div class="comment-block">
-                <h4 class="title-comment" style="text-align: center;">Ajouté par <?= $comment['nickname']; ?> le <?= (new DateTimeImmutable($comment['createdAt']))->format('d/m/Y') ?> à <?= (new DateTimeImmutable($comment['createdAt']))->format('H:i') ?></h4>
-                <p class="comment" style="text-align: center;"><?= $comment['content']; ?></p>
+                <h4 class="title-comment" style="text-align: center;">Ajouté par <?= $comment->getNickname(); ?> le <?= $comment->getFormattedCreatedAt(); ?></h4>
+                <p class="comment" style="text-align: center;"><?= $comment->getContent(); ?></p>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>

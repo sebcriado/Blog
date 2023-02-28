@@ -38,6 +38,9 @@ class ArticleModel extends AbstractModel
             ON A.categoryId = C.idCategory
             WHERE idArticle = ?';
 
-        return $this->db->getOneResult($sql, [$idArticle]);
+        $result = $this->db->getOneResult($sql, [$idArticle]);
+        $result['category'] = new Category($result['categoryId'], $result['name']);
+
+        return new Article($result);
     }
 }

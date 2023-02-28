@@ -21,6 +21,13 @@ class CommentModel extends AbstractModel
                 WHERE articleId = ?
                 ORDER BY createdAt DESC';
 
-        return $this->db->getAllResults($sql, [$idArticle]);
+        $results = $this->db->getAllResults($sql, [$idArticle]);
+
+        $comments = [];
+        foreach ($results as $result) {
+            $comments[] = new Comment($result);
+        }
+
+        return $comments;
     }
 }
