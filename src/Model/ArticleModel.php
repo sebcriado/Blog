@@ -1,20 +1,8 @@
 <?php
 
-class ArticleModel
+class ArticleModel extends AbstractModel
 {
 
-    /**
-     * Stocke l'objet Database
-     */
-    private Database $db;
-
-    /**
-     * Constructeur
-     */
-    public function __construct()
-    {
-        $this->db = new Database();
-    }
 
     /**
      * Sélectionne tous les articles

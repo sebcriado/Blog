@@ -1,18 +1,7 @@
 <?php
 
-class CommentModel
+class CommentModel extends AbstractModel
 {
-
-    private Database $db;
-
-    /**
-     * Constructeur
-     */
-    public function __construct()
-    {
-        $this->db = new Database();
-    }
-
 
     function addComment(string $nickname, string $content, int $idArticle)
     {

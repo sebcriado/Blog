@@ -10,6 +10,7 @@ require 'vendor/autoload.php';
 require 'config.php';
 
 // Inclusion des dépendances
+require 'src/Core/AbstractModel.php';
 require 'src/Model/ArticleModel.php';
 require 'src/Model/CommentModel.php';
 require 'src/Core/Database.php';
