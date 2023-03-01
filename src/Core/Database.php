@@ -1,7 +1,11 @@
 <?php
+//1. Déclaration du namespace
+namespace App\Core;
 
-use Symfony\Bundle\MakerBundle\Str;
+//2. Import de classes
+use PDO;
 
+//3. Définition de la classe Database
 class Database
 {
     /**

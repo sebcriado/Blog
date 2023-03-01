@@ -1,5 +1,11 @@
 <?php
 
+//1. Déclaration du namespace
+namespace App\Entity;
+
+//2. Import de classes
+use DateTimeImmutable;
+
 class Comment
 {
 

@@ -1,4 +1,6 @@
 <?php
+//1. Déclaration du namespace
+namespace App\Entity;
 
 class Category
 {

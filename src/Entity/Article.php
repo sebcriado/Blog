@@ -1,6 +1,10 @@
 <?php
+//1. Déclaration du namespace
+namespace App\Entity;
 
-use Doctrine\ORM\Query\Expr\Func;
+//2. Import de classes
+use DateTimeImmutable;
+use App\Entity\Category;
 
 class Article
 {

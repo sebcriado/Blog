@@ -10,14 +10,11 @@ require 'vendor/autoload.php';
 require 'config.php';
 
 // Inclusion des dépendances
-require 'src/Core/Database.php';
-require 'src/Core/AbstractModel.php';
-require 'src/Entity/Category.php';
-require 'src/Entity/Article.php';
-require 'src/Entity/Comment.php';
-require 'src/Model/ArticleModel.php';
-require 'src/Model/CommentModel.php';
 require 'functions.php';
+
+// Import des classes
+use App\Model\ArticleModel;
+use App\Model\CommentModel;
 
 // Validation du paramètre id de l'URL
 if (!array_key_exists('id', $_GET) || !$_GET['id'] || !ctype_digit($_GET['id'])) {
