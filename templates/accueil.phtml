@@ -7,7 +7,7 @@
 
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
                 <ul class="navbar-nav">
-                    <a class="nav-link link-warning active" aria-current="page" href="index.php">Accueil</a>
+                    <a class="nav-link link-warning active" aria-current="page" href="<?= constructUrl('/'); ?>">Accueil</a>
 
                     <a class="nav-link text-light" href="#">Catégories</a>
 
@@ -24,12 +24,12 @@
         <h1 class="title-article"><?= $article->getTitle(); ?></h1>
         <small>Créé le <?= $article->getFormattedCreatedAt(); ?></small>
         <?php if ($article->getImage()) : ?>
-            <img src="<?= $article->getImage() ?>" alt="" width="300px">
+            <img src="<?= asset('images/' . $article->getImage()) ?>" alt="" width="300px">
         <?php endif; ?>
         <p class="content-article"><?= mb_substr($article->getContent(), 0, 100) ?> [...]</p>
         <div>
             <p class="category-article"><?= $article->getCategoryName(); ?></p>
-            <a class="read-more" href="article.php?id=<?= $article->getIdArticle() ?>">Lire la suite</a>
+            <a class="read-more" href="<?= constructUrl('/article', ['id' => $article->getIdArticle()]); ?>">Lire la suite</a>
         </div>
     </article>
 <?php endforeach; ?>

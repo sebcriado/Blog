@@ -2,14 +2,14 @@
     <h1 class="all-title-article"><?= $articlesId->getTitle(); ?></h1>
     <p class="category-article"><?= $articlesId->getCategoryName() ?></p>
     <?php if ($articlesId->getImage()) : ?>
-        <img src="<?= $articlesId->getImage() ?>" alt="" width="500px">
+        <img src="<?= asset('images/' . $articlesId->getImage()) ?>" alt="" width="500px">
     <?php endif; ?>
     <p class="all-content-article"><?= $articlesId->getContent(); ?></p>
 </article>
 
 <section>
     <h2 style="text-align: center; margin-top: 30px;">Commentaires</h2>
-    <form method="POST" action="article.php?id=<?= $idArticle ?>" class="d-flex flex-column align-items-center mt-4">
+    <form method="POST" action="<?= constructUrl('/article', ['id' => $articlesId->getIdArticle()]); ?>" class="d-flex flex-column align-items-center mt-4">
         <legend style="text-align: center;">Ajouter un commentaire</legend>
         <div class="mb-3 w-50">
             <label for="nickname" class="form-label">Pseudo</label>
