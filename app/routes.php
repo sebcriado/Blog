@@ -3,11 +3,13 @@
 $routes = [
     'home' => [
         'path' => '/',
-        'controller' => 'home.php'
+        'controller' => 'HomeController',
+        'method' => 'index'
     ],
     'article' => [
         'path' => '/article',
-        'controller' => 'article.php'
+        'controller' => 'ArticleController',
+        'method' => 'index'
     ]
 ];
 

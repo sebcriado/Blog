@@ -31,17 +31,19 @@ $routes = require '../app/routes.php';
 // On crée une const ROUTES pour avoir accès à nos routes partout
 define('ROUTES', $routes);
 
-$controller = null;
+$className = null;
+$method = null;
 
 foreach ($routes as $route) {
     if ($path == $route['path']) {
-        $controller = $route['controller'];
+        $className = $route['controller'];
+        $method = $route['method'];
         break;
     }
 }
 
 // Si on n'a pas trouvé le path dans les routes... => erreur 404
-if ($controller == null) {
+if ($className == null) {
     http_response_code(404);
     echo 'Article introuvable';
     exit;
@@ -49,7 +51,9 @@ if ($controller == null) {
 
 // Ici j'ai trouvé ma route !
 try {
-    require '../controllers/' . $controller;
+    $className = "App\\Controller\\$className";
+    $controller = new $className();
+    $controller->$method();
 } catch (Exception $exception) {
     echo $exception->getMessage();
     exit;
