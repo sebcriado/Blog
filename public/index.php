@@ -22,17 +22,35 @@ if ($path == '') {
     $path = '/';
 }
 
-// Routing
-switch ($path) {
-    case '/':
-        require '../controllers/home.php';
-        break;
+// ROUTING
 
-    case '/article':
-        require '../controllers/article.php';
+
+// On va chercher dans le fichier routes.php le tableau de routes
+$routes = require '../app/routes.php';
+
+// On crée une const ROUTES pour avoir accès à nos routes partout
+define('ROUTES', $routes);
+
+$controller = null;
+
+foreach ($routes as $route) {
+    if ($path == $route['path']) {
+        $controller = $route['controller'];
         break;
-    default:
-        http_response_code(404);
-        echo 'Article introuvable';
-        exit;
+    }
+}
+
+// Si on n'a pas trouvé le path dans les routes... => erreur 404
+if ($controller == null) {
+    http_response_code(404);
+    echo 'Article introuvable';
+    exit;
+}
+
+// Ici j'ai trouvé ma route !
+try {
+    require '../controllers/' . $controller;
+} catch (Exception $exception) {
+    echo $exception->getMessage();
+    exit;
 }

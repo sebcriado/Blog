@@ -40,7 +40,7 @@ if (!empty($_POST)) {
         $_SESSION['flashbag'] = 'Votre commentaire a bien été ajouté !';
 
         // Redirection vers la page Article
-        header('Location: ' . constructUrl('/article', ['id' => $idArticle]));
+        header('Location: ' . constructUrl('article', ['id' => $idArticle]));
         exit;
     }
 }

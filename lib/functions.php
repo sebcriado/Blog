@@ -6,9 +6,15 @@ function asset(string $path)
 }
 
 
-function constructUrl(string $path, array $params = [])
+function constructUrl(string $routeName, array $params = [])
 {
-    $url =  BASE_URL . '/index.php' . $path;
+
+    // Si la route donnée en paramètre n'existe pas, on lance une Exception
+    if (!array_key_exists($routeName, ROUTES)) {
+        throw new Exception('ERREUR : pas de route nommée' . $routeName);
+    }
+
+    $url =  BASE_URL . '/index.php' . ROUTES[$routeName]['path'];
 
     if ($params) {
         $url .= '?' . http_build_query($params);

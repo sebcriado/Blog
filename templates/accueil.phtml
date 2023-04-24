@@ -7,7 +7,7 @@
 
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
                 <ul class="navbar-nav">
-                    <a class="nav-link link-warning active" aria-current="page" href="<?= constructUrl('/'); ?>">Accueil</a>
+                    <a class="nav-link link-warning active" aria-current="page" href="<?= constructUrl('home'); ?>">Accueil</a>
 
                     <a class="nav-link text-light" href="#">Catégories</a>
 
@@ -29,7 +29,7 @@
         <p class="content-article"><?= mb_substr($article->getContent(), 0, 100) ?> [...]</p>
         <div>
             <p class="category-article"><?= $article->getCategoryName(); ?></p>
-            <a class="read-more" href="<?= constructUrl('/article', ['id' => $article->getIdArticle()]); ?>">Lire la suite</a>
+            <a class="read-more" href="<?= constructUrl('article', ['id' => $article->getIdArticle()]); ?>">Lire la suite</a>
         </div>
     </article>
 <?php endforeach; ?>
