@@ -11,6 +11,27 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-primary" aria-label="Twelfth navbar example">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+                    <ul class="navbar-nav">
+                        <a class="nav-link link-warning active" aria-current="page" href="<?= constructUrl('home'); ?>">Accueil</a>
+
+                        <a class="nav-link text-light" href="#">Catégories</a>
+
+                        <a class="nav-link text-light" href="<?= constructUrl('contact'); ?>">Contact</a>
+
+                        <a class="nav-link text-light" href="#">Profil</a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main>
         <!-- Message flash -->

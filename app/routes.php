@@ -10,6 +10,16 @@ $routes = [
         'path' => '/article',
         'controller' => 'ArticleController',
         'method' => 'index'
+    ],
+    'contact' => [
+        'path' => '/contact',
+        'controller' => 'ContactController',
+        'method' => 'showForm'
+    ],
+    'ajax-send-contact-form' => [
+        'path' => '/ajax-contact',
+        'controller' => 'ContactController',
+        'method' => 'sendForm'
     ]
 ];
 
