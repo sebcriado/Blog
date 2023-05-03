@@ -21,12 +21,13 @@
                 <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
                     <ul class="navbar-nav">
                         <a class="nav-link link-warning active" aria-current="page" href="<?= constructUrl('home'); ?>">Accueil</a>
-
-                        <a class="nav-link text-light" href="#">Catégories</a>
-
                         <a class="nav-link text-light" href="<?= constructUrl('contact'); ?>">Contact</a>
-
-                        <a class="nav-link text-light" href="#">Profil</a>
+                        <?php if ((new App\Service\UserSession())->getUser()) : ?>
+                            <a class="nav-link text-light" href="<?= constructUrl('logout'); ?>">Déconnexion</a>
+                        <?php else : ?>
+                            <a class="nav-link text-light" href="<?= constructUrl('login'); ?>">Connexion</a>
+                            <a class="nav-link text-light" href="<?= constructUrl('signup'); ?>">Créer un compte</a>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

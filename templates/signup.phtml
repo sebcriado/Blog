@@ -1,0 +1,31 @@
+<form action="<?= constructUrl('signup') ?>" method="post">
+    <div>
+        <label for="nickname">Pseudo :</label>
+        <input type="text" id="nickname" name="nickname" value="<?= $nickname; ?>">
+        <?php if (isset($errors['nickname'])) : ?>
+            <p class="error"><?= $errors['nickname']; ?></p>
+        <?php endif; ?>
+    </div>
+    <div>
+        <label for="email">Email :</label>
+        <input type="text" id="email" name="email" value="<?= $email; ?>">
+        <?php if (isset($errors['email'])) : ?>
+            <p class="error"><?= $errors['email']; ?></p>
+        <?php endif; ?>
+    </div>
+    <div>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password">
+        <?php if (isset($errors['password'])) : ?>
+            <p class="error"><?= $errors['password']; ?></p>
+        <?php endif; ?>
+    </div>
+    <div>
+        <label for="password-confirm">Confirmation :</label>
+        <input type="password" id="password-confirm" name="password-confirm">
+        <?php if (isset($errors['password-confirm'])) : ?>
+            <p class="error"><?= $errors['password-confirm']; ?></p>
+        <?php endif; ?>
+    </div>
+    <input type="submit" value="Créer compte">
+</form>

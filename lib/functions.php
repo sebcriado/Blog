@@ -39,23 +39,3 @@ function validateCommentForm(string $nickname, string $content)
 
     return $errors;
 }
-
-
-// function validateContactForm(string $email, string $subject, string $content)
-// {
-//     $errors = [];
-
-//     if (!$email) {
-//         $errors['email'] = 'Le champ "email" est obligatoire';
-//     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-//         $errors['email'] = "L'email doit être valide";
-//     }
-
-//     if (!$subject) {
-//         $errors['subject'] = 'Le champ "subject" est obligatoire';
-//     }
-
-//     if (!$content) {
-//         $errors['content'] = 'Le champ "message" est obligatoire';
-//     }
-// }

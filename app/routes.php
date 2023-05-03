@@ -20,7 +20,23 @@ $routes = [
         'path' => '/ajax-contact',
         'controller' => 'ContactController',
         'method' => 'sendForm'
+    ],
+    'signup' => [
+        'path' => '/signup',
+        'controller' => 'UserController',
+        'method' => 'signup'
+    ],
+    'login' => [
+        'path' => '/login',
+        'controller' => 'AuthController',
+        'method' => 'login'
+    ],
+    'logout' => [
+        'path' => '/logout',
+        'controller' => 'AuthController',
+        'method' => 'logout'
     ]
+
 ];
 
 return $routes;

@@ -76,4 +76,16 @@ class Database
 
         return $results;
     }
+
+    function lastInsertId()
+    {
+        return $this->pdo->lastInsertId();
+    }
+
+    function insert(string $sql, array $values = [])
+    {
+        $pdoStatement = $this->prepareAndExecute($sql, $values);
+
+        return $this->lastInsertId();
+    }
 }
