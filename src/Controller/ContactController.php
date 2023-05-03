@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
+
 
 class ContactController
 {
@@ -41,6 +45,26 @@ class ContactController
         }
 
         if (empty($errors)) {
+
+            $transport = Transport::fromDsn(MAILER_DSN);
+            $mailer = new Mailer($transport);
+
+            // Démarrage de la tamporistaion de sortie
+            ob_start();
+
+            // On récupère le contenu du tampon de sortie de la variable $html et on vide le tampon
+            include '../templates/mailContact.phtml';
+
+            $html = ob_get_clean();
+
+            $objEmail = (new Email())
+                ->from($email)
+                ->to(ADMIN_EMAIL)
+                ->subject('Nouveau message:' . $subject)
+                ->text('Sending emails is fun again!')
+                ->html($html);
+
+            $mailer->send($objEmail);
             $response['success'] = 'Votre email a bien été envoyé';
         } else {
             $response['errors'] = $errors;
